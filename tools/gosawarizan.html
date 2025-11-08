@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <h1>誤差伝搬計算ツール</h1>
+    <h1>Propagation of Uncertainty Tool (Only divide)</h1>
     <div>
         <input type="text" id="input1">±<input type="text" id="input1-err">
         /<input type="text" id="input2">±<input type="text" id="input2-err">
-        <button id="calc-btn">計算</button>
+        <button id="calc-btn">Calculate</button>
         <div id="result"></div>
         <script>
             document.getElementById('calc-btn').addEventListener('click', function() {
@@ -20,14 +20,14 @@
                 const err2 = parseFloat(document.getElementById('input2-err').value);
 
                 if (isNaN(val1) || isNaN(err1) || isNaN(val2) || isNaN(err2) || val2 === 0) {
-                    document.getElementById('result').innerText = '有効な数値を入力してください。';
+                    document.getElementById('result').innerText = 'Please enter valid numbers.';
                     return;
                 }
 
                 const resultVal = val1 / val2;
                 const resultErr = Math.sqrt((err1/val2)**2 + (val1*err2/(val2**2))**2);
 
-                document.getElementById('result').innerText = `結果: ${resultVal} ± ${resultErr}`;    
+                document.getElementById('result').innerText = `Result: ${resultVal} ± ${resultErr}`;
             });
         </script>
     </div>
